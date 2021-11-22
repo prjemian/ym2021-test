@@ -1,4 +1,4 @@
-name: punx
+name: ym2021_prj
 
 channels:
   - defaults
@@ -7,5 +7,4 @@ channels:
 dependencies:
   - python=3
   - pip
-  - pyRestTable
   - versioneer
