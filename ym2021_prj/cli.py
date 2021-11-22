@@ -1,9 +1,19 @@
 """
-Command-line interface
+Python package template with command-line interface
 """
 
+import argparse
 from . import __version__
 
 
+def cli_args():
+    """Define & examine command-line arguments & options."""
+    _desc = f"{__package__}: " + __doc__.strip().splitlines()[0]
+    p = argparse.ArgumentParser(description=_desc)
+    p.add_argument("-v", "--version", action="version", version=__version__)
+    return p.parse_args()
+
+
 def main():
-    return f"main {__version__ = } of {__file__ = }"
+    # simple function of this package, return a string
+    return f"main {__version__ = } of {__file__ = }, {cli_args() = }"
