@@ -1,11 +1,15 @@
-import os
+import pathlib
 import setuptools
 import versioneer
 
 
-def read_long_description(fname):
-    """Utility function to read the repository README.md file."""
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+# def read_long_description(fname):
+#     """Utility function to read the repository README.md file."""
+#     return open(os.path.join(os.path.dirname(__file__), fname)).read()
+
+# read the contents of your README file
+this_directory = pathlib.Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
 
 
 setuptools.setup(
@@ -20,7 +24,7 @@ setuptools.setup(
     url="https://github.com/prjemian/ym2021_prj",
     packages=setuptools.find_packages(),
     # long_description="Repository to test GitHub Actions Workflows.",
-    long_description=read_long_description("README.md"),
+    long_description=long_description,
     long_description_content_type="text/markdown",
     classifiers=[
         "Development Status :: 3 - Alpha",
