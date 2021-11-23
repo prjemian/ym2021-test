@@ -3,13 +3,10 @@ import setuptools
 import versioneer
 
 
-# def read_long_description(fname):
-#     """Utility function to read the repository README.md file."""
-#     return open(os.path.join(os.path.dirname(__file__), fname)).read()
-
 # read the contents of your README file
 this_directory = pathlib.Path(__file__).parent
 long_description = (this_directory / "README.md").read_text()
+# long_description = (pathlib.Path(__file__).parent / "README.md").read_text()
 
 
 setuptools.setup(
