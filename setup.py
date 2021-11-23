@@ -19,8 +19,9 @@ setuptools.setup(
     keywords="Python test repository",
     url="https://github.com/prjemian/ym2021_prj",
     packages=setuptools.find_packages(),
-    long_description="Repository to test GitHub Actions Workflows.",
-    # long_description=read_long_description("README.md"),
+    # long_description="Repository to test GitHub Actions Workflows.",
+    long_description=read_long_description("README.md"),
+    long_description_content_type="text/markdown",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Utilities",
