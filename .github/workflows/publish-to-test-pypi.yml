@@ -29,6 +29,7 @@ jobs:
         --outdir dist/
         .
 
+    # NOTE: "Secrets" page, not "Environments"
     - name: Publish distribution 📦 to Test PyPI
       uses: pypa/gh-action-pypi-publish@master
       with:
