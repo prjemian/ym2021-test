@@ -30,6 +30,7 @@ jobs:
         .
 
     # NOTE: "Secrets" page, not "Environments"
+    # NOTE: testpypi upload with versioneer only works on new tags.
     - name: Publish distribution 📦 to Test PyPI
       uses: pypa/gh-action-pypi-publish@master
       with:
