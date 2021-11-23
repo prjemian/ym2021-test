@@ -29,6 +29,16 @@ jobs:
         --outdir dist/
         .
 
+    - name: Install twine
+      run: >-
+        python -m
+        pip install
+        twine
+
+    - name: Check package metadata
+      run: >-
+        twine check dist/*
+
     # NOTE: "Secrets" page, not "Environments"
     # NOTE: testpypi upload with versioneer only works on new tags.
     # - name: Publish distribution 📦 to Test PyPI
