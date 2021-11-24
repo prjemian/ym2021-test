@@ -34,4 +34,10 @@ setuptools.setup(
         "Programming Language :: Python :: 3.10",
         "Topic :: Software Development",
     ],
+    entry_points={
+        # create & install scripts in <python>/bin
+        "console_scripts": ["ym2021_prj=ym2021_prj.cli:main", ],
+        # 'gui_scripts': [],
+    },
+    test_suite="ym2021_prj/tests",
 )
