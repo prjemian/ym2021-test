@@ -1,9 +1,6 @@
-name: build conda package and upload to Anaconda
-# https://github.com/marketplace/actions/publish-anaconda-package-to-anaconda-org
+name: Publish conda package to Anaconda
 
-# snippet suggestion from GitHub MarketPlace
-# - name: Publish Anaconda package to Anaconda.org
-#   uses: BEFH/anaconda-publish@v1.5.1
+# https://github.com/marketplace/actions/publish-anaconda-package-to-anaconda-org
 # https://github.com/BEFH/anaconda-publish
 
 on:
@@ -23,7 +20,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Publish Anaconda package to Anaconda.org
       uses: BEFH/anaconda-publish@v1.5.1
-      # uses: paskino/conda-package-publish-action@master
       with:
         subDir: 'conda'
         channels: 'conda-forge -c prjemian'
