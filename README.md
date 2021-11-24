@@ -1,4 +1,4 @@
-# ym2021_prj_
+# ym2021_prj
 
 Repository to test GitHub Actions Workflows.
 
