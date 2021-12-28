@@ -49,6 +49,7 @@ jobs:
     - name: Run tests with pytest
       run: |
         source $CONDA/bin/activate $ENV_NAME
+        export TESTABLE=testable
         pytest -vvv .
       env:
         PY_VER: ${{ matrix.python-version }}
