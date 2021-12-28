@@ -9,6 +9,7 @@ def test_cli():
     assert isinstance(response, str)
     assert response.find("ym2021_prj") >= 0
 
+
 @pytest.mark.parametrize(
     "var_name, exists, value",
     [
