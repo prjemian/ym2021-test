@@ -3,7 +3,7 @@ name: Cacheing Something
 on: push
 
 jobs:
-  cache-primes:
+  cache-job:
     name: Cache Something Workflow
     runs-on: ubuntu-latest
 
@@ -23,6 +23,25 @@ jobs:
         mkdir -p ~/vault
         echo "Something to be cached" > ~/vault/text.txt
         ls -lAFgh ~/vault/
+
+    - name: Show Cache Content
+      run: |
+        ls -lAFgh ~/vault/
+        cat ~/vault/text.txt
+
+  use-cache:
+    name: Use Cache
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Cache Something
+      id: cache-abcd
+      uses: actions/cache@v3
+      with:
+        path: vault
+        key: ${{ runner.os }}-something
 
     - name: Show Cache Content
       run: |
