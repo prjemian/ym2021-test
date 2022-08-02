@@ -51,5 +51,5 @@ jobs:
 
     - name: Show Cache Content
       run: |
-        ls -lAFgh ~/
+        ls -lAFgh ~/vault
         cat ~/vault/start_xxx.sh
