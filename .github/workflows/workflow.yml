@@ -45,5 +45,5 @@ jobs:
 
     - name: Show Cache Content
       run: |
-        ls -lAFgh ~/vault/
-        cat ~/vault/text.txt
+        ls -lAFgh ~/
+        # cat ~/vault/text.txt
