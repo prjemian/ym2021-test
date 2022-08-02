@@ -23,7 +23,7 @@ jobs:
         mkdir -p ~/vault
         wget https://raw.githubusercontent.com/prjemian/epics-docker/main/v1.1/n5_custom_synApps/start_xxx.sh
         wget https://raw.githubusercontent.com/prjemian/epics-docker/main/v1.1/n5_custom_synApps/remove_container.sh
-        mv remove_container  start_xxx.sh   ~/vault
+        mv remove_container.sh  start_xxx.sh   ~/vault
 
     - name: Show Cache Content
       run: |
