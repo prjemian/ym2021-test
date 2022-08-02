@@ -21,6 +21,7 @@ jobs:
       if: steps.cache-vault.outputs.cache-hit != 'true'
       run: |
         mkdir -p ~/vault
+        wget $URL/$AD/start_adsim.sh
         wget $URL/$SYNAPPS/start_xxx.sh
         wget $URL/$SYNAPPS/remove_container.sh
         mv start_adsim.sh remove_container.sh  start_xxx.sh   ~/vault
