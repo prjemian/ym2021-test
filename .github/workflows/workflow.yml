@@ -15,15 +15,19 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/vault
-        key: ${{ runner.os }}-docker-image-v1.1
+        key: ${{ runner.os }}-v1_1-n5_custom_synApps
 
     - name: Generate Cache Content
       if: steps.cache-vault.outputs.cache-hit != 'true'
       run: |
         mkdir -p ~/vault
-        wget https://raw.githubusercontent.com/prjemian/epics-docker/main/v1.1/n5_custom_synApps/start_xxx.sh
-        wget https://raw.githubusercontent.com/prjemian/epics-docker/main/v1.1/n5_custom_synApps/remove_container.sh
-        mv remove_container.sh  start_xxx.sh   ~/vault
+        wget $URL/$SYNAPPS/start_xxx.sh
+        wget $URL/$SYNAPPS/remove_container.sh
+        mv start_adsim.sh remove_container.sh  start_xxx.sh   ~/vault
+      env:
+        AD: v1.1/n6_custom_areaDetector
+        SYNAPPS: v1.1/n5_custom_synApps
+        URL: https://raw.githubusercontent.com/prjemian/epics-docker/main
 
     - name: Show Cache Content
       run: |
@@ -42,7 +46,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/vault
-        key: ${{ runner.os }}-docker-image-v1.1
+        key: ${{ runner.os }}-v1_1-n5_custom_synApps
 
     - name: Show Cache Content
       run: |
