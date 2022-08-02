@@ -14,7 +14,7 @@ jobs:
       id: cache-abcd
       uses: actions/cache@v3
       with:
-        path: vault
+        path: ~/vault
         key: ${{ runner.os }}-something
 
     - name: Generate Cache Content
@@ -40,7 +40,7 @@ jobs:
       id: cache-abcd
       uses: actions/cache@v3
       with:
-        path: vault
+        path: ~/vault
         key: ${{ runner.os }}-something
 
     - name: Show Cache Content
