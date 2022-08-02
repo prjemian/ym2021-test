@@ -22,6 +22,7 @@ jobs:
       run: |
         mkdir -p ~/vault
         echo "Something to be cached" > ~/vault/text.txt
+        ls -lAFgh ~/vault/
 
     - name: Show Cache Content
       run: |
