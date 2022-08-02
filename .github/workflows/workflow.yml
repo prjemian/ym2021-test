@@ -1,25 +1,29 @@
-name: Caching Primes
+name: Cacheing Something
 
 on: push
 
 jobs:
   cache-primes:
-    name: Cache Primes Workflow
+    name: Cache Something Workflow
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
 
-    - name: Cache Primes
-      id: cache-primes
+    - name: Cache Something
+      id: cache-abcd
       uses: actions/cache@v3
       with:
-        path: prime-numbers
-        key: ${{ runner.os }}-primes
+        path: vault
+        key: ${{ runner.os }}-something
 
-    - name: Generate Prime Numbers
-      if: steps.cache-primes.outputs.cache-hit != 'true'
-      run: /generate-primes.sh -d prime-numbers
+    - name: Generate Cache Content
+      if: steps.cache-abcd.outputs.cache-hit != 'true'
+      run: |
+        mkdir -p ~/vault
+        echo "Something to be cached" > ~/vault/text.txt
 
-    - name: Use Prime Numbers
-      run: /primes.sh -d prime-numbers
+    - name: Show Cache Content
+      run: |
+        ls -lAFgh ~/vault/
+        cat ~/vault/text.txt
