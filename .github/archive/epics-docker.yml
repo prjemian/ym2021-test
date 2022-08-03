@@ -1,4 +1,7 @@
-name: Cacheing Something
+name: Cache Something
+
+# NOTE: this idea is not working out
+# Takes ~13 minutes to build the cache but the tar.gz file is not recovered in the cache.
 
 on: push
 
