@@ -38,10 +38,12 @@ jobs:
       run: |
         ls -lAFgh ~/vault/
         cat ~/vault/start_xxx.sh
+        sudo ls /var/lib/docker
 
   use-cache:
     name: Use Cache
     runs-on: ubuntu-latest
+    needs: cache-job
 
     steps:
     - uses: actions/checkout@v3
