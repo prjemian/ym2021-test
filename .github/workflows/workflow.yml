@@ -28,7 +28,9 @@ jobs:
         # get the images
         docker pull prjemian/custom-synapps-6.2:latest
         docker pull prjemian/custom-synapps-6.2-ad-3.10:latest
-        sudo (cd /var/lib && tar cf - docker | (cd ~/vault && tar xf -))
+        cd /var/lib
+        sudo tar czf $HOME/vault/docker.tar.gz ./docker
+        cd ~
       env:
         AD: v1.1/n6_custom_areaDetector
         SYNAPPS: v1.1/n5_custom_synApps
@@ -60,3 +62,17 @@ jobs:
       run: |
         ls -lAFgh ~/vault
         cat ~/vault/start_xxx.sh
+
+    - name: Restore docker images
+      run: |
+        cd /var/lib
+        sudo tar xzf $HOME/vault/docker.tar.gz
+        sudo systemctl restart docker.service
+        docker image ls
+
+    - name: Start docker containers
+      run: |
+        cd /var/lib
+        bash ./start_xxx.sh gp
+        bash ./start_adsimdet.sh ad
+        docker ps
