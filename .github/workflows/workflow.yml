@@ -45,7 +45,7 @@ jobs:
 
     - name: Start docker containers
       run: |
-        cd /var/lib
+        cd $HOME/vault
         bash ./start_xxx.sh gp
         bash ./start_adsimdet.sh ad
         docker ps
@@ -80,7 +80,7 @@ jobs:
 
     # - name: Start docker containers
     #   run: |
-    #     cd /var/lib
+    #     cd $HOME/vault
     #     bash ./start_xxx.sh gp
     #     bash ./start_adsimdet.sh ad
     #     docker ps
