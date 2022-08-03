@@ -15,10 +15,10 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/vault
-        key: ${{ runner.os }}-epics_docker-v1_1-DEBUG
+        key: ${{ runner.os }}-epics_docker-v1_1
 
     - name: Generate Cache Content
-      if: steps.cache-vault.outputs.cache-hit != 'true'
+      # if: steps.cache-vault.outputs.cache-hit != 'true'
       run: |
         mkdir -p ~/vault
         wget $URL/$REPO/$AD/start_adsim.sh
@@ -40,7 +40,7 @@ jobs:
     - name: Show Cache Content
       run: |
         ls -lAFgh ~/vault/
-        cat ~/vault/start_xxx.sh
+        # cat ~/vault/start_xxx.sh
         sudo ls /var/lib/docker
 
   use-cache:
@@ -61,10 +61,11 @@ jobs:
     - name: Show Cache Content
       run: |
         ls -lAFgh ~/vault
-        cat ~/vault/start_xxx.sh
+        # cat ~/vault/start_xxx.sh
 
     - name: Restore docker images
       run: |
+        ls -lAFgh ~/vault/
         cd /var/lib
         sudo tar xzf $HOME/vault/docker.tar.gz
         sudo systemctl restart docker.service
