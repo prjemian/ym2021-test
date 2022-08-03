@@ -15,7 +15,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/vault
-        key: ${{ runner.os }}-epics_docker-v1_1
+        key: ${{ runner.os }}-epics_docker-v1_1-DEBUG
 
     - name: Generate Cache Content
       if: steps.cache-vault.outputs.cache-hit != 'true'
@@ -25,9 +25,10 @@ jobs:
         wget $URL/$REPO/$SYNAPPS/start_xxx.sh
         wget $URL/$REPO/$SYNAPPS/remove_container.sh
         mv start_adsim.sh remove_container.sh  start_xxx.sh   ~/vault
-        # TODO: get the images
+        # get the images
         docker pull prjemian/custom-synapps-6.2:latest
-        # docker pull prjemian/custom-synapps-6.2-ad-3.10:latest
+        docker pull prjemian/custom-synapps-6.2-ad-3.10:latest
+        sudo (cd /var/lib && tar cf - docker | (cd ~/vault && tar xf -))
       env:
         AD: v1.1/n6_custom_areaDetector
         SYNAPPS: v1.1/n5_custom_synApps
