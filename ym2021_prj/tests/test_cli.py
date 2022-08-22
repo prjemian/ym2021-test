@@ -15,7 +15,7 @@ def test_cli():
     [
         ["TESTABLE", True, "testable"],
         ["NO_SUCH_ENV_VAR", False, None],
-    ]
+    ],
 )
 def test_env_var(var_name, exists, value):
     assert (var_name in os.environ) is exists

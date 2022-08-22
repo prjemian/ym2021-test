@@ -35,9 +35,9 @@ jobs:
         run: |
           flake8
 
-      # - name: Check Code Style
-      #   run: |
-      #     black .
+      - name: Check Code Style
+        run: |
+          black .
 
   tests:
     name: CI py${{ matrix.python-version }}
