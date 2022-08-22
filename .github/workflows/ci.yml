@@ -87,9 +87,9 @@ jobs:
       #     python3 ./setup.py build sdist
       #     python3 -m pip install .
 
-      # - name: Command Test(s)
-      #   run: |
-      #     ym2021_prj --help
+      - name: Functional Test(s)
+        run: |
+          ym2021_prj --help
 
       # - name: Upload to coveralls
       #   # https://github.com/TheKevJames/coveralls-python
