@@ -1,3 +1,3 @@
-from . import _version
+from setuptools_scm import get_version
 
-__version__ = _version.get_versions()["version"]
+__version__ = get_version()
