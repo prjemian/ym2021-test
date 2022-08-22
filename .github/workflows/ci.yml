@@ -18,7 +18,7 @@ defaults:
 jobs:
 
   lint:
-    name: Code style
+    name: Linting & Code style
     runs-on: ubuntu-latest
 
     steps:
@@ -69,6 +69,7 @@ jobs:
           # coverage
           # coveralls
           extra-specs: |
+            coveralls
             pytest
             pytest-cov
 
