@@ -8,7 +8,9 @@ from . import __version__
 
 def cli_args():
     """Define & examine command-line arguments & options."""
-    _desc = f"{__package__}: " + __doc__.strip().splitlines()[0]
+    # print(f"{__package__=}")
+    # _desc = f"{__package__}: " + __doc__.strip().splitlines()[0]
+    _desc = __doc__.strip().splitlines()[0]
     p = argparse.ArgumentParser(description=_desc)
     p.add_argument("-v", "--version", action="version", version=__version__)
     return p.parse_args()
