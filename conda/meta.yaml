@@ -1,6 +1,6 @@
 {% set setup_data = load_setup_py_data(setup_file='../setup.py', from_recipe_dir=True) %}
 {% set cfg_data = load_file_data(setup_file='../setup.cfg', from_recipe_dir=True) %}
-{% set name = setup_data.get_version() %}
+{% set name = setup_data.get('__pkg_version__') %}
 {% set version = cfg_data.get('version') %}
 {% set url = cfg_data.get('metadata').get('url') %}
 {% set description = cfg_data.get('metadata').get('description') %}
