@@ -82,19 +82,19 @@ jobs:
           coverage combine
           coverage report --precision 3
 
-      - name: Install for functional testing
-        run: |
-          python3 ./setup.py build sdist
-          python3 -m pip install .
-
-      - name: Functional Test(s)
-        run: |
-          ym2021_prj --help
-
-      # - name: Upload to coveralls
-      #   # https://github.com/TheKevJames/coveralls-python
-      #   shell: bash -l {0}
+      # - name: Install for functional testing
       #   run: |
-      #     coveralls --service=github
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     python3 ./setup.py build sdist
+      #     python3 -m pip install .
+
+      # - name: Functional Test(s)
+      #   run: |
+      #     ym2021_prj --help
+
+      - name: Upload to coveralls
+        # https://github.com/TheKevJames/coveralls-python
+        shell: bash -l {0}
+        run: |
+          coveralls --service=github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
