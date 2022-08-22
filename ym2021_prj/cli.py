@@ -16,8 +16,8 @@ def cli_args():
 
 def main():
     # simple function of this package, return a string
-    # args = cli_args()  # FIXME: fails in CI
-    return f"{__name__} {__version__ = } of {__file__ = }"
+    args = cli_args()  # FIXME: fails in CI
+    return f"{__name__} version {__version__} of '{__file__}', args={args}"
 
 
 if __name__ == "__main__":
