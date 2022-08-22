@@ -1,13 +1,14 @@
+from .. import cli
 import os
 import pytest
-
-from .. import cli
+import sys
 
 
 def test_cli():
+    sys.argv = ["ym2021_prj"]
     response = cli.main()
     assert isinstance(response, str)
-    assert response.find("ym2021_prj") >= 0
+    assert "ym2021_prj" in response
 
 
 @pytest.mark.parametrize(
