@@ -65,12 +65,12 @@ jobs:
           channel-priority: flexible
           environment-file: environment.yml
           environment-name: anaconda-test-env-py-${{ matrix.python-version }}
+          # packages for the unit tests
+          # coverage
+          # coveralls
           extra-specs: |
-            # packages for the unit tests
-            coverage
-            # coveralls
             pytest
-            # pytest-cov
+            pytest-cov
 
       # - name: Install Test Packages
       #   run: |
