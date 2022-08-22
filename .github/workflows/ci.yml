@@ -35,9 +35,12 @@ jobs:
         run: |
           flake8
 
-      - name: Check Code Style
-        run: |
-          black .
+      # - name: Check Code Style
+      #   run: |
+      #     black .
+
+      - name: Run black (code style)
+        uses: psf/black@stable
 
   tests:
     name: CI py${{ matrix.python-version }}
