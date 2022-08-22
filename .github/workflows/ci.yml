@@ -67,10 +67,10 @@ jobs:
           environment-name: anaconda-test-env-py-${{ matrix.python-version }}
           extra-specs: |
             # packages for the unit tests
-            # coverage
+            coverage
             # coveralls
             pytest
-            pytest-cov
+            # pytest-cov
 
       # - name: Install Test Packages
       #   run: |
