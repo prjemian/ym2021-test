@@ -60,14 +60,17 @@ jobs:
         uses: mamba-org/provision-with-micromamba@v12
         with:
           # cache-downloads: true
+          cache-env-key: env-key-${{ matrix.python-version }}
           cache-env: true
+          channel-priority: flexible
           environment-file: environment.yml
           environment-name: anaconda-test-env-py-${{ matrix.python-version }}
-          # add packages for the unit tests
           extra-specs: |
-            coverage
-            coveralls
+            # packages for the unit tests
+            # coverage
+            # coveralls
             pytest
+            pytest-cov
 
       # - name: Install Test Packages
       #   run: |
