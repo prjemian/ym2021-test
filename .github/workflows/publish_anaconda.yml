@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.7']
+        python-version: ['3.9']
 
     steps:
 
@@ -45,13 +45,22 @@ jobs:
           pytest-cov
           setuptools-scm
 
-    - name: Build Anaconda package and Publish to Anaconda.org
-      uses: BEFH/anaconda-publish@v1.5.1
+    # - name: Build Anaconda package and Publish to Anaconda.org
+    #   uses: BEFH/anaconda-publish@v1.5.1
+    #   with:
+    #     subDir: 'conda'
+    #     channels: 'conda-forge -c prjemian'
+    #     AnacondaToken: ${{ secrets.ANACONDA_TOKEN }}
+    #     publish: ${{ github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') }}
+    #     test_all: ${{(github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')) || (github.ref == 'refs/heads/main')}}
+    #     convert_win: false
+    #     convert_osx: false
+
+    - name: Build and upload the conda packages
+      uses: uibcdf/action-build-and-upload-conda-packages@v1.1.0
       with:
-        subDir: 'conda'
-        channels: 'conda-forge -c prjemian'
-        AnacondaToken: ${{ secrets.ANACONDA_TOKEN }}
-        publish: ${{ github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') }}
-        test_all: ${{(github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')) || (github.ref == 'refs/heads/main')}}
-        convert_win: false
-        convert_osx: false
+        meta_yaml_dir: conda/
+        python-version: ${{ matrix.python-version }} # Values previously defined in `matrix`
+        # user: uibcdf
+        label: auto
+        token: ${{ secrets.ANACONDA_TOKEN }} # Replace with the right name of your secret
