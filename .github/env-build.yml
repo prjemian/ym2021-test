@@ -6,5 +6,7 @@ channels:
 
 dependencies:
   - python=3
+  - conda-verify
+  - conda-build
   - pip
   - setuptools-scm
