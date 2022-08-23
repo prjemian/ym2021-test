@@ -1,6 +1,7 @@
 {% set py_data = load_setup_py_data(setup_file='../setup.py', from_recipe_dir=True) %}
 {% set version = py_data.get('conda_meta').get('version') %}
-{% set name = py_data.get('conda_meta').get('name') %}
+# {% set name = py_data.get('conda_meta').get('name') %}
+{% set name = py_data.get('elbow') %}
 {% set url = py_data.get('conda_meta').get('url') %}
 {% set description = py_data.get('conda_meta').get('description') %}
 {% set keywords = py_data.get('conda_meta').get('keywords') %}
