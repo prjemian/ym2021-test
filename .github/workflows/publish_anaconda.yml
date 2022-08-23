@@ -12,12 +12,39 @@ on:
       - '**'
   pull_request:
     branches: [ main ]
-    
+
+defaults:
+  run:
+    shell: bash -l {0}
+
 jobs:
+
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.7']
+
     steps:
+
     - uses: actions/checkout@v1
+
+    - name: Create Python ${{ matrix.python-version }} environment
+      uses: mamba-org/provision-with-micromamba@v12
+      with:
+        # cache-downloads: true
+        cache-env-key: env-key-${{ matrix.python-version }}
+        cache-env: true
+        channel-priority: flexible
+        environment-file: environment.yml
+        environment-name: anaconda-build-env-${{ matrix.python-version }}
+        # packages for the unit tests
+        extra-specs: |
+          coveralls
+          pytest
+          pytest-cov
+          setuptools-scm
+
     - name: Build Anaconda package and Publish to Anaconda.org
       uses: BEFH/anaconda-publish@v1.5.1
       with:
