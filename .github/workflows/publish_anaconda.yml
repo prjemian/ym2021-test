@@ -25,7 +25,6 @@ jobs:
     steps:
 
     - name: Checkout
-      # uses: actions/checkout@v1
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
@@ -64,7 +63,6 @@ jobs:
       id: build
       uses: cascode-labs/build-conda-action@main
       with:
-        # build_options: "-c defaults -c conda-forge"
         build_options: "-c conda-forge"
         conda_build_env_filepath: .github/env-build.yml
         recipe_path: conda
