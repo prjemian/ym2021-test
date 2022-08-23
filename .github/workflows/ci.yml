@@ -69,6 +69,7 @@ jobs:
             coveralls
             pytest
             pytest-cov
+            setuptools-scm
 
       - name: Python Tests
         run: |
