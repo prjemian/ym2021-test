@@ -1,0 +1,10 @@
+name: ym2021_prj-build-env
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3
+  - pip
+  - setuptools-scm

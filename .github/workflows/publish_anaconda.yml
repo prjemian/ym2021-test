@@ -48,4 +48,4 @@ jobs:
         build_options: "-c defaults -c conda-forge"
         package_artifact_name: ym2021_prj
         recipe_path: conda
-        test_results_artifact_name: ym2021_prj-tests
+        conda_build_env_filepath: .github/env-build.yml
