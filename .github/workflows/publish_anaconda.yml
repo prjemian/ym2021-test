@@ -46,7 +46,7 @@ jobs:
       run: |
         echo "pwd: $(pwd)"
         echo "directory: $(ls -lAFgh)"
-        echo ".git directory: $(ls -lAFgh) .git/"
+        echo ".git directory: $(ls -lAFgh .git/)"
         echo "version_from_git=$(git describe --tags)" >> $GITHUB_ENV
         echo "version_from_scm=$(python -m setuptools_scm)" >> $GITHUB_ENV
         echo "version_from_setup=$(python -m setup --version)" >> $GITHUB_ENV
