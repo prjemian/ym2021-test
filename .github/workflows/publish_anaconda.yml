@@ -45,6 +45,7 @@ jobs:
     - name: Custom environment variables
       run: |
         echo "pwd: $(pwd)"
+        echo "directory: $(ls -lAFgh)"
         echo "version_from_git=$(git describe --tags)" >> $GITHUB_ENV
         echo "version_from_scm=$(python -m setuptools_scm)" >> $GITHUB_ENV
         echo "version_from_setup=$(python -m setup --version)" >> $GITHUB_ENV
@@ -59,7 +60,8 @@ jobs:
       id: build
       uses: cascode-labs/build-conda-action@main
       with:
-        build_options: "-c defaults -c conda-forge"
+        # build_options: "-c defaults -c conda-forge"
+        build_options: "-c conda-forge"
         conda_build_env_filepath: .github/env-build.yml
         recipe_path: conda
 

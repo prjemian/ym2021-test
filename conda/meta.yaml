@@ -14,11 +14,13 @@ about:
 
 package:
   name: "{{ data.get('name')|lower }}"
-  version: {{ data.get('version') }}
-  # version: {{ GIT_DESCRIBE_TAG }}+{{ GIT_BUILD_STR }}
+  # version: {{ data.get('version') }}
+  version: {{ GIT_DESCRIBE_TAG }}
 
 build:
   script: python -m pip install --no-deps --ignore-installed .
+  number: {{ GIT_DESCRIBE_NUMBER }}
+  string: {{ GIT_BUILD_STR }}
   noarch: python
   entry_points:
     - ym2021_prj = ym2021_prj.cli:main
