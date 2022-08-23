@@ -41,9 +41,9 @@ jobs:
         # packages for the unit tests
         extra-specs: |
           conda-build
-          coveralls
-          pytest
-          pytest-cov
+          # coveralls
+          # pytest
+          # pytest-cov
           setuptools-scm
 
     # - name: Build Anaconda package and Publish to Anaconda.org
@@ -62,6 +62,6 @@ jobs:
       with:
         meta_yaml_dir: conda/
         python-version: ${{ matrix.python-version }} # Values previously defined in `matrix`
-        # user: uibcdf
-        label: auto
+        user: prjemian
+        label: "auto"
         token: ${{ secrets.ANACONDA_TOKEN }} # Replace with the right name of your secret
