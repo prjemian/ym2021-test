@@ -40,7 +40,7 @@ jobs:
         environment-name: anaconda-build-env-${{ matrix.python-version }}
         # packages for the unit tests
         extra-specs: |
-          conda build
+          conda-build
           coveralls
           pytest
           pytest-cov
