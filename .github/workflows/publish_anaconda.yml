@@ -27,7 +27,8 @@ jobs:
 
     steps:
 
-    - uses: actions/checkout@v3
+    - name: Chekout
+      uses: actions/checkout@v3
 
     # - name: Create Python ${{ matrix.python-version }} environment
     #   uses: mamba-org/provision-with-micromamba@v12
