@@ -4,14 +4,16 @@ from setuptools_scm import get_version
 
 setuptools.setup()
 
-# adapter for use in conda's meta.yaml file
+# adapters for use in conda's meta.yaml file
 _setup_cfg = configparser.ConfigParser()
 _setup_cfg.read("setup.cfg")
-conda_meta = dict(version=get_version())
-for _key in "description keywords license name url".split():
-    conda_meta[_key] = _setup_cfg.get("metadata", _key)
 
-elbow = "wrist"
+__pkg_description__ = _setup_cfg.get("metadata", "description")
+__pkg_keywords__ = _setup_cfg.get("metadata", "keywords")
+__pkg_license__ = _setup_cfg.get("metadata", "license")
+__pkg_name__ = _setup_cfg.get("metadata", "name")
+__pkg_url__ = _setup_cfg.get("metadata", "url")
+__pkg_version__ = get_version()
 
-del _key
 del _setup_cfg
+del get_version

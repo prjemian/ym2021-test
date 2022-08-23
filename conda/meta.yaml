@@ -33,6 +33,7 @@ requirements:
   host:
     - python
     - pip
+    - setuptools-scm
   run:
     - python >=3.8
 
