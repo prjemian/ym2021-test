@@ -43,9 +43,14 @@ jobs:
           setuptools-scm
 
     - name: Build conda package
+      id: build
       uses: cascode-labs/build-conda-action@main
       with:
         build_options: "-c defaults -c conda-forge"
         package_artifact_name: ym2021_prj
         recipe_path: conda
         conda_build_env_filepath: .github/env-build.yml
+
+    - name: About the conda package that was built.
+      run: |
+        echo "package-filepath: ${{ steps.build.outputs.package-filepath }}"
