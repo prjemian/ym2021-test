@@ -1,10 +1,10 @@
 {% set data = load_setup_py_data(setup_file='../setup.py', from_recipe_dir=True) %}
-{% set version = data.get('__pkg_version__') %}
-{% set name = data.get('__pkg_name__') %}
-{% set url = data.get('__pkg_url__') %}
-{% set description = data.get('__pkg_description__') %}
-{% set keywords = data.get('__pkg_keywords__') %}
-{% set license = data.get('__pkg_license__') %}
+{% set version = data.get('version', 'undefined_version') %}
+{% set name = data.get('name', 'undefined_name') %}
+{% set url = data.get('url', 'undefined_url') %}
+{% set description = data.get('description', 'undefined_description') %}
+{% set keywords = data.get('keywords', 'undefined_keywords') %}
+{% set license = data.get('license', 'undefined_license') %}
 
 source:
   path: ../

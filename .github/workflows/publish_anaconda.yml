@@ -47,9 +47,8 @@ jobs:
       uses: cascode-labs/build-conda-action@main
       with:
         build_options: "-c defaults -c conda-forge"
-        package_artifact_name: ym2021_prj
-        recipe_path: conda
         conda_build_env_filepath: .github/env-build.yml
+        recipe_path: conda
 
     - name: About the conda package that was built.
       run: |
