@@ -35,6 +35,7 @@ requirements:
     - setuptools-scm
   run:
     - python >=3.8
+    - setuptools-scm
 
 
 # test:
