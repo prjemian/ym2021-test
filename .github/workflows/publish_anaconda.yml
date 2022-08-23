@@ -44,6 +44,7 @@ jobs:
 
     - name: Custom environment variables
       run: |
+        echo "pwd: $(pwd)"
         echo "version_from_git=$(git describe --tags)" >> $GITHUB_ENV
         echo "version_from_scm=$(python -m setuptools_scm)" >> $GITHUB_ENV
         echo "version_from_setup=$(python -m setup --version)" >> $GITHUB_ENV
@@ -51,7 +52,7 @@ jobs:
 
     - name: Diagnostics
       run: |
-        echo "version_from_git: ${{ env.version_from_scm }}"
+        echo "version_from_scm: ${{ env.version_from_scm }}"
         env | sort
 
     - name: Build conda package
