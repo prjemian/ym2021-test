@@ -27,6 +27,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: Custom env var
+      run: |
+        echo "git_describe=$(git describe --tags)" >> $GITHUB_ENV
+        env | sort
+
     - name: Create Python environment
       uses: mamba-org/provision-with-micromamba@v12
       with:
@@ -41,6 +46,11 @@ jobs:
           conda-build
           conda-verify
           setuptools-scm
+
+    - name: Diagnostics
+      run: |
+        echo "git_describe: ${{ env.git_describe }}"
+        env | sort
 
     - name: Build conda package
       id: build
