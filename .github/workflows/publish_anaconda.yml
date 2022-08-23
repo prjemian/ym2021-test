@@ -21,56 +21,31 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-minor-version: [9]
 
     steps:
 
-    - name: Chekout
+    - name: Checkout
       uses: actions/checkout@v3
 
-    # - name: Create Python ${{ matrix.python-version }} environment
-    #   uses: mamba-org/provision-with-micromamba@v12
-    #   with:
-    #     # cache-downloads: true
-    #     cache-env-key: env-key-${{ matrix.python-version }}
-    #     cache-env: true
-    #     channel-priority: flexible
-    #     environment-file: environment.yml
-    #     environment-name: anaconda-build-env-${{ matrix.python-version }}
-    #     # packages for the unit tests
-    #     extra-specs: |
-    #       conda-build
-    #       setuptools-scm
-
-    # - name: Build and upload the conda packages
-    #   uses: uibcdf/action-build-and-upload-conda-packages@v1.1.0
-    #   with:
-    #     meta_yaml_dir: conda/
-    #     python-version: ${{ matrix.python-version }}
-    #     user: prjemian
-    #     label: "auto"
-    #     token: ${{ secrets.ANACONDA_TOKEN }}
-
-    - name: Determine publish
-      uses: haya14busa/action-cond@v1
-      id: publish
+    - name: Create Python environment
+      uses: mamba-org/provision-with-micromamba@v12
       with:
-        cond: ${{ contains(github.ref, 'stable') || startsWith(github.ref, 'refs/heads/v') }}
-        if_true: 'true'
-        if_false: 'false'
+        # cache-downloads: true
+        cache-env-key: env-key-python
+        cache-env: true
+        channel-priority: flexible
+        environment-file: environment.yml
+        environment-name: anaconda-build-env-python
+        # packages for the unit tests
+        extra-specs: |
+          conda-build
+          conda-verify
+          setuptools-scm
 
-    - name: Build and Publish
-      uses: openalea/action-build-publish-anaconda@v0.1.2
+    - name: Build conda package
+      uses: cascode-labs/build-conda-action@main
       with:
-        conda: conda
-        mamba: true
-        python: ${{ matrix.python-minor-version }}
-        numpy: '20.0'
-        channels: conda-forge, prjemian
-        token: ${{ secrets.ANACONDA_TOKEN }}
-        # publish: ${{ steps.publish.outputs.value }}
-        # label: main
-        publish: true
-        label: dev
+        build_options: "-c defaults -c conda-forge"
+        package_artifact_name: ym2021_prj
+        recipe_path: conda
+        test_results_artifact_name: ym2021_prj-tests
