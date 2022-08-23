@@ -1,26 +1,21 @@
 {% set data = load_setup_py_data(setup_file='../setup.py', from_recipe_dir=True) %}
-{% set version = data.get('version', 'undefined_version') %}
-{% set name = data.get('name', 'undefined_name') %}
-{% set url = data.get('url', 'undefined_url') %}
-{% set description = data.get('description', 'undefined_description') %}
-{% set keywords = data.get('keywords', 'undefined_keywords') %}
-{% set license = data.get('license', 'undefined_license') %}
 
 source:
   path: ../
 
 about:
-    home: "{{ url }}"
+    home: "{{ data.get('url') }}"
     license_file: LICENSE
     # see: https://github.com/conda/conda-build/blob/master/conda_build/license_family.py#L8-L23
     license_family: CC
-    license: "{{ license }}"
-    summary: "{{ description }}"
-    keywords: "{{ keywords }}"
+    license: "{{ data.get('license') }}"
+    summary: "{{ data.get('description') }}"
+    keywords: "{{ data.get('keywords') }}"
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: "{{ data.get('name')|lower }}"
+  version: {{ data.get('version') }}
+  # version: {{ GIT_DESCRIBE_TAG }}+{{ GIT_BUILD_STR }}
 
 build:
   script: python -m pip install --no-deps --ignore-installed .
