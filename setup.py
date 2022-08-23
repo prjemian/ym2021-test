@@ -6,7 +6,7 @@ def get_my_version():
     import os
 
     # https://docs.conda.io/projects/conda-build/en/latest/user-guide/environment-variables.html#git-environment-variables
-    version = os.environ.get("version_from_git")
+    version = os.environ.get("version_from_scm")
     if version is None:
         version = setuptools_scm.get_version()
     else:

@@ -14,8 +14,8 @@ about:
 
 package:
   name: "{{ data.get('name')|lower }}"
-  # version: {{ data.get('version') }}
-  version: {{ GIT_DESCRIBE_TAG }}
+  version: {{ data.get('version') }}
+  # version: {{ GIT_DESCRIBE_TAG }}
 
 build:
   script: python -m pip install --no-deps --ignore-installed .
