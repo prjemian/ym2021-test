@@ -40,6 +40,7 @@ jobs:
         environment-name: anaconda-build-env-python
         # packages for the unit tests
         extra-specs: |
+          anaconda
           conda-build
           conda-verify
           setuptools-scm
@@ -70,3 +71,16 @@ jobs:
     - name: About the conda package that was built.
       run: |
         echo "package-filepath: ${{ steps.build.outputs.package-filepath }}"
+
+    - name: Skip upload 📦 to Anaconda channel
+      if: "!startsWith(github.ref, 'refs/tags')"
+      run: |
+        echo "Not a new tag, not uploading to Anaconda channel."
+
+    - name: Publish distribution 📦 to Anaconda channel
+      if: startsWith(github.ref, 'refs/tags')
+      run: |
+        export ANACONDA_API_TOKEN=${{ secrets.ANACONDA_TOKEN }}
+        export CHANNEL=prjemian
+        export LABEL=main
+        anaconda upload -c $CHANNEL --label $LABEL ${{ steps.build.outputs.package-filepath }}
