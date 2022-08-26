@@ -17,8 +17,8 @@ package:
   version: {{ data.get('version') }}
 
 build:
-  script: python -m pip install --no-deps --ignore-installed .
   noarch: python
+  script: python -m pip install --no-deps --ignore-installed .
   entry_points:
     - ym2021_prj = ym2021_prj.cli:main
 
@@ -29,7 +29,6 @@ requirements:
     - setuptools-scm
   run:
     - python >=3.8
-    - setuptools-scm
 
 # test:
 #   imports:
